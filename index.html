@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Transportasi</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1 style="font-size: 40px;  color: rgb(69, 93, 146); font-weight: bold;">SISTEM MANAJEMEN TRANSPORTASI</h1>
+    </div>
+
+    <div
+        style="display: flex; flex-wrap: wrap; gap: 10px; text-align: center; border-bottom: 2px solid black; border-top: 2px solid black; margin: 10px 0; padding: 5px 0; ">
+        <div
+            style="flex: 1; padding: 15px; background-color: rgb(58, 74, 125); border-radius: 10px; font-size: 20px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, serif; font-weight: bold;">
+            <a style="color: white; text-decoration: none;" href="#kendaraan">DAFTAR KENDARAAN</a>
+        </div>
+        <div
+            style="flex: 1; padding: 15px; background-color: rgb(58, 74, 125); border-radius: 10px; font-size: 20px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, serif; font-weight: bold;">
+            <a style="color: white; text-decoration: none;" href="#pelanggan">DAFTAR PELANGGAN</a>
+        </div>
+        <div
+            style="flex: 1; padding: 15px; color: white; background-color: rgb(58, 74, 125); border-radius: 10px; font-size: 20px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, serif; font-weight: bold;">
+            <a style="color: white; text-decoration: none;" href="#transaksi">TRANSAKSI</a>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Daftar Kendaraan -->
+    <section class="card" id="kendaraan">
+        <div
+            style="width: 100%; background-color:rgb(58, 74, 125); color: white; padding: 20px; font-size: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; font-weight: bold;margin-bottom: 30px;">
+            MANAJEMEN DATA KENDARAAN</div>
+        <div
+            style="background:#fff; padding:20px; border-radius:10px; 
+                box-shadow:0 6px 15px rgba(0,0,0,0.2); margin-bottom:30px; border: 2px solid #182449; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            <h3 style="text-align:center; color:rgb(58, 74, 125); font-size: 20px">DAFTAR KENDARAAN</h3>
+            <table border="1" style="width:100%; border-collapse:collapse; text-align:center; margin-bottom:20px;">
+                <thead style="background:#3a4a7d; color:white;">
+                    <tr>
+                        <th style="padding:10px;">Nomor</th>
+                        <th style="padding:10px;">Jenis</th>
+                        <th style="padding:10px;">Merk/Model</th>
+                        <th style="padding:10px;">Tahun</th>
+                        <th style="padding:10px;">Harga Sewa</th>
+                        <th style="padding:10px;">Stok</th>
+                        <th style="padding:10px;">Status</th>
+                        <th style="padding:10px;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="table-kendaraan" style="padding: 10px;"></tbody>
+            </table>
+            <div style="text-align:center;">
+                <button onclick="document.getElementById('form-kendaraan').scrollIntoView({behavior:'smooth'});" style="background:#3a4a7d; color:white; padding:12px 20px; 
+                               border:none; border-radius:6px; cursor:pointer; font-size:16px; 
+                               transition:0.3s;"
+                    onmouseover="this.style.background='#2c3760'; this.style.transform='scale(1.05)';"
+                    onmouseout="this.style.background='#3a4a7d'; this.style.transform='scale(1)';">
+                    + Tambah Kendaraan
+                </button>
+            </div>
+        </div>
+
+        <div style="background:#fff; padding:20px; border-radius:10px; 
+        box-shadow:0 6px 15px rgba(0,0,0,0.2); margin-bottom:30px; 
+        border:2px solid #182449; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+        max-width:700px; margin:auto;">
+
+            <h4 style="color:#05266d; text-align:center; margin-bottom:25px; font-size: 20px;">
+                TAMBAHKAN KENDARAAN BARU
+            </h4>
+            <form id="form-kendaraan">
+                <div style="display:flex; gap:20px; margin-bottom:18px;">
+                    <div style="flex:1;">
+                        <label for="nomor" style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Nomor
+                        </label>
+                        <input type="text" id="nomor" placeholder="Masukkan nomor kendaraan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+
+                    <div style="flex:1;">
+                        <label for="jenis" style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Jenis
+                        </label>
+                        <select id="jenis" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                            <option value="">-- Pilih Jenis Kendaraan --</option>
+                            <option value="sepeda">Sepeda</option>
+                            <option value="motor">Motor</option>
+                            <option value="mobil">Mobil</option>
+                            <option value="bus">Bus</option>
+                            <option value="truk">Truk</option>
+                            <option value="kereta">Kereta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:18px;">
+                    <div style="flex:1;">
+                        <label for="merk" style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Merk/Model
+                        </label>
+                        <input type="text" id="merk" required placeholder="Masukkan merk/model kendaraan"
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+
+                    <div style="flex:1;">
+                        <label for="tahun" style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Tahun Produksi
+                        </label>
+                        <input type="number" id="tahun" placeholder="Masukkan tahun produksi kendaraan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:25px;">
+                    <div style="flex:1;">
+                        <label for="harga" style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Harga Sewa
+                        </label>
+                        <input type="number" id="harga" placeholder="Masukkan harga sewa kendaraan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+
+                    <div style="flex:1;">
+                        <label for="stok" style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Stok
+                        </label>
+                        <input type="number" id="stok" placeholder="Masukkan stok kendaraan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="text-align:right;">
+                    <button type="submit" style="background:#3a4a7d; color:white; padding:12px 20px; 
+                    border:none; border-radius:6px; cursor:pointer; font-size:16px; 
+                    transition:0.3s;"
+                        onmouseover="this.style.background='#2c3760'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.background='#3a4a7d'; this.style.transform='scale(1)';">
+                        Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br><br><br>
+
+    <!-- Daftar Pelanggan -->
+    <section class="card" id="pelanggan">
+        <div
+            style="width: 100%; background-color:rgb(58, 74, 125); color: white; padding: 20px; font-size: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; font-weight: bold;margin-bottom: 30px;">
+            MANAJEMEN DATA PELANGGAN</div>
+        <div
+            style="background:#fff; padding:20px; border-radius:10px; 
+                box-shadow:0 6px 15px rgba(0,0,0,0.2); margin-top: 30px; margin-bottom:30px; border: 2px solid #182449; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            <h3 style="text-align:center; color:rgb(58, 74, 125); font-size: 20px">DAFTAR PELANGGAN</h3>
+            <table border="1" style="width:100%; border-collapse:collapse; text-align:center; margin-bottom:20px;">
+                <thead style="background:#3a4a7d; color:white;">
+                    <tr>
+                        <th style="padding:10px;">No</th>
+                        <th style="padding:10px;">Nama</th>
+                        <th style="padding:10px;">Alamat</th>
+                        <th style="padding:10px;">Nomor Telepon</th>
+                        <th style="padding:10px;">Kendaraan Yang Disewa</th>
+                        <th style="padding:10px;">Kategori</th>
+                        <th style="padding:10px;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="table-pelanggan"></tbody>
+            </table>
+            <div style="text-align:center;">
+                <button onclick="document.getElementById('form-pelanggan').scrollIntoView({behavior:'smooth'});" style="background:#3a4a7d; color:white; padding:12px 20px; 
+                               border:none; border-radius:6px; cursor:pointer; font-size:16px; 
+                               transition:0.3s;"
+                    onmouseover="this.style.background='#2c3760'; this.style.transform='scale(1.05)';"
+                    onmouseout="this.style.background='#3a4a7d'; this.style.transform='scale(1)';">
+                    + Tambah Pelanggan
+                </button>
+            </div>
+        </div>
+
+        <div style="background:#fff; padding:20px; border-radius:10px; 
+        box-shadow:0 6px 15px rgba(0,0,0,0.2); margin-bottom:30px; 
+        border:2px solid #182449; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+        max-width:700px; margin:auto;">
+
+            <h4 id="tambah-kendaraan" style="color:#05266d; text-align:center; margin-bottom:25px; font-size: 20px;">
+                TAMBAHKAN PELANGGAN BARU
+            </h4>
+            <form id="form-pelanggan">
+                <div style="display:flex; gap:20px; margin-bottom:18px;">
+                    <div style="flex:1;">
+                        <label for="nama_pelanggan"
+                            style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">Nama</label>
+                        <input type="text" id="nama_pelanggan" required placeholder="Masukkan nama pelanggan"
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+
+                    <div style="flex:1;">
+                        <label for="alamat_pelanggan"
+                            style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Alamat
+                        </label>
+                        <input type="text" id="alamat_pelanggan" placeholder="Masukkan alamat pelanggan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:25px;">
+                    <div style="flex:1;">
+                        <label for="telp_pelanggan"
+                            style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Nomor Telepon
+                        </label>
+                        <input type="text" id="telp_pelanggan" placeholder="Masukkan nomor telepon pelanggan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+
+                    <div style="flex:1;">
+                        <label for="sewa_pelanggan"
+                            style="font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                            Kendaraan Yang Disewa
+                        </label>
+                        <select id="sewa_pelanggan" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                            <option value="">-- Pilih Jenis Kendaraan --</option>
+                            <option value="Sepeda">Sepeda</option>
+                            <option value="Motor">Motor</option>
+                            <option value="Mobil">Mobil</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Truk">Truk</option>
+                            <option value="Kereta">Kereta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:25px;">
+                    <label for="kategori_pelanggan"
+                        style="display: block; margin-bottom: 6px; font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                        Kategori
+                    </label>
+                    <select id="kategori_pelanggan" required
+                        style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                        <option value="">-- Pilih Kategori Pelanggan --</option>
+                        <option value="Biasa">Biasa</option>
+                        <option value="VIP">VIP</option>
+                        <option value="Exclusive">Exclusive</option>
+                    </select>
+                </div>
+
+                <div style="text-align:right;">
+                    <button type="submit" style="background:#3a4a7d; color:white; padding:12px 20px; 
+                    border:none; border-radius:6px; cursor:pointer; font-size:16px; 
+                    transition:0.3s;"
+                        onmouseover="this.style.background='#2c3760'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.background='#3a4a7d'; this.style.transform='scale(1)';">
+                        Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br><br><br>
+
+    <!-- Transaksi -->
+    <section class="card" id="transaksi">
+        <div
+            style="width: 100%; background-color:rgb(58, 74, 125); color: white; padding: 20px; font-size: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; font-weight: bold;margin-bottom: 30px;">
+            MANAJEMEN DATA TRANSAKSI</div>
+        <div style="background:#fff; padding:20px; border-radius:10px; 
+            box-shadow:0 6px 15px rgba(0,0,0,0.2); margin:30px auto; max-width:700px; border:2px solid #182449;">
+
+            <h3 style="text-align:center; color:rgb(58,74,125); margin-bottom:25px;">FORM TRANSAKSI</h3>
+
+            <form id="form-transaksi">
+                <!-- Pilih Pelanggan -->
+                <div style="margin-bottom:15px;">
+                    <label for="select_pelanggan"
+                        style="display:block; font-weight:bold; color:#05266d; margin-bottom:6px;">
+                        Nama Pelanggan
+                    </label>
+                    <select id="select_pelanggan" required
+                        style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                        <option value="">-- Pilih Pelanggan --</option>
+                    </select>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:15px; max-width:700px; box-sizing:border-box;">
+                    <div style="flex:1; min-width:0;">
+                        <label for="alamat_transaksi"
+                            style="display:block; font-weight:bold; color:#05266d; margin-bottom:6px;">Alamat</label>
+                        <input type="text" id="alamat_transaksi" readonly
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                    <div style="flex:1; min-width:0;">
+                        <label for="telp_transaksi"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Nomor
+                            Telepon</label>
+                        <input type="text" id="telp_transaksi" readonly
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label for="kategori_transaksi"
+                        style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d; display:block; margin-bottom:6px;">
+                        Kategori Pelanggan
+                    </label>
+                    <input type="text" id="kategori_transaksi" readonly
+                        style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label for="select_kendaraan"
+                        style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Jenis
+                        Kendaraan</label>
+                    <select id="select_kendaraan" required
+                        style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px;">
+                        <option value="">-- Pilih Kendaraan --</option>
+                    </select>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:15px; max-width:700px; box-sizing:border-box;">
+                    <div style="flex:1; min-width:0;">
+                        <label for="merk_transaksi"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Merk</label>
+                        <input type="text" id="merk_transaksi" readonly
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                    <div style="flex:1; min-width:0;">
+                        <label for="tahun_transaksi"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Tahun</label>
+                        <input type="text" id="tahun_transaksi" readonly
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:15px; max-width:700px; box-sizing:border-box;">
+                    <div style="flex:1; min-width:0;">
+                        <label for="harga_transaksi"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Harga Sewa /
+                            Hari</label>
+                        <input type="text" id="harga_transaksi" readonly
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                    <div style="flex:1; min-width:0;">
+                        <label for="stok_transaksi"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Stok</label>
+                        <input type="number" id="stok_transaksi" readonly
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:15px; max-width:700px; box-sizing:border-box;">
+                    <div style="flex:1; min-width:0;">
+                        <label for="tgl_mulai"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Tanggal Mulai
+                            Sewa</label>
+                        <input type="date" id="tgl_mulai" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                    <div style="flex:1; min-width:0;">
+                        <label for="tgl_selesai"
+                            style="display:block; margin-bottom:6px; font-weight:bold; color:#05266d;">Tanggal Selesai
+                            Sewa</label>
+                        <input type="date" id="tgl_selesai" required
+                            style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label for="total_transaksi"
+                        style="display:block; font-weight:bold; color:#05266d; margin-bottom:6px;">
+                        Total Harga Sewa
+                    </label>
+                    <input type="text" id="total_transaksi" readonly
+                        style="width:100%; padding:10px; border:1px solid #345992; border-radius:8px; box-sizing:border-box;">
+                </div>
+
+                <div style="text-align:right;">
+                    <button type="submit" style="background:#3a4a7d; color:white; padding:12px 20px; 
+                    border:none; border-radius:6px; cursor:pointer; font-size:16px; 
+                    transition:0.3s;"
+                        onmouseover="this.style.background='#2c3760'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.background='#3a4a7d'; this.style.transform='scale(1)';">Simpan</button>
+                </div>
+            </form>
+        </div>
+
+        <div
+            style="background:#fff; padding:20px; border-radius:10px; 
+                box-shadow:0 6px 15px rgba(0,0,0,0.2); margin-bottom:30px; border: 2px solid #182449; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            <h3 style="text-align:center; color:rgb(58, 74, 125); font-size: 20px">DAFTAR TRANSAKSI SEWA KENDARAAN</h3>
+            <table border="1" style="width:100%; border-collapse:collapse; text-align:center; margin-bottom:20px;">
+                <thead style="background:#3a4a7d; color:white;">
+                    <tr>
+                        <th style="padding:10px;">Nama Pelanggan</th>
+                        <th style="padding:10px;">Alamat</th>
+                        <th style="padding:10px;">Nomor Telepon</th>
+                        <th style="padding:10px;">Kategori</th>
+                        <th style="padding:10px;">Kendaraan Yang Disewa</th>
+                        <th style="padding:10px;">Merk</th>
+                        <th style="padding:10px;">Tahun</th>
+                        <th style="padding:10px;">Harga Sewa/Hari</th>
+                        <th style="padding:10px;">Stok</th>
+                        <th style="padding:10px;">Tanggal Mulai Sewa</th>
+                        <th style="padding:10px;">Tanggal Selesai Sewa</th>
+                        <th style="padding:10px;">Total Harga Sewa</th>
+                    </tr>
+                </thead>
+                <tbody id="table-transaksi" style="padding: 10px;"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer
+        style="padding: 20px; background-color: rgb(58, 74, 125); color: white; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center;">
+        © 2025 Siti Aisyah. All Rights Reserved.</footer>
+
+
+    <script>
+        //KENDARAAN
+        class kendaraan {
+            constructor(nomor, jenis, merk, tahun, harga, stok) {
+                this.nomor = nomor;
+                this.jenis = jenis;
+                this.merk = merk;
+                this.tahun = tahun;
+                this.harga = harga;
+                this.stok = stok;
+
+                this.status = stok > 0 ? "Tersedia" : "Habis";
+            }
+
+            sewa() {
+                if (this.stok > 0) {
+                    this.stok--;
+                    this.status = this.stok > 0 ? "Disewa" : "Habis";
+                }
+            }
+
+            kembalikan() {
+                this.stok++;
+                this.status = "Tersedia";
+            }
+        }
+
+        class sepeda extends kendaraan {
+            constructor(nomor, merk, tahun, harga, stok, jenisSepeda) {
+                super(nomor, "Sepeda", merk, tahun, harga, stok);
+                this.jenisSepeda = jenisSepeda;
+            }
+        }
+
+        class motor extends kendaraan {
+            constructor(nomor, merk, tahun, harga, stok, tipe) {
+                super(nomor, "Motor", merk, tahun, harga, stok);
+                this.tipe = tipe;
+            }
+        }
+
+        class mobil extends kendaraan {
+            constructor(nomor, merk, tahun, harga, stok, kursi) {
+                super(nomor, "Mobil", merk, tahun, harga, stok);
+                this.kursi = kursi;
+            }
+        }
+
+        class bus extends kendaraan {
+            constructor(nomor, merk, tahun, harga, stok, kapasitas) {
+                super(nomor, "Bus", merk, tahun, harga, stok);
+                this.kapasitas = kapasitas;
+            }
+        }
+
+        class truk extends kendaraan {
+            constructor(nomor, merk, tahun, harga, stok, kapasitasMuatan) {
+                super(nomor, "Truk", merk, tahun, harga, stok);
+                this.kapasitasMuatan = kapasitasMuatan;
+            }
+        }
+
+        class kereta extends kendaraan {
+            constructor(nomor, merk, tahun, harga, stok, jumlahGerbong) {
+                super(nomor, "Kereta", merk, tahun, harga, stok);
+                this.jumlahGerbong = jumlahGerbong;
+            }
+        }
+
+        let daftarKendaraan = [
+            new truk("TR001", "Hino", 2018, 500000, 3, 10),
+            new truk("TR002", "Mitsubishi", 2019, 450000, 2, 8),
+            new truk("TR003", "Isuzu", 2020, 550000, 4, 12),
+            new sepeda("SP001", "Polygon", 2021, 50000, 5, "Gunung"),
+            new sepeda("SP002", "Giant", 2022, 60000, 4, "Balap"),
+            new sepeda("SP003", "United", 2020, 45000, 3, "Gunung"),
+            new motor("MO001", "Honda Beat", 2021, 150000, 10, "Matic"),
+            new motor("MO002", "Yamaha NMax", 2022, 250000, 5, "Matic"),
+            new motor("MO003", "Suzuki GSX", 2020, 200000, 7, "Manual"),
+            new kereta("KR001", "PT KAI", 2015, 2000000, 2, 10)
+        ];
+
+        const form = document.getElementById("form-kendaraan");
+        const tableBody = document.getElementById("table-kendaraan");
+
+        function renderTable() {
+            tableBody.innerHTML = "";
+            daftarKendaraan.forEach((k, index) => {
+                const row = `
+                    <tr>
+                        <td style="padding:10px;">${k.nomor}</td>
+                        <td style="padding:10px;">${k.jenis}</td>
+                        <td style="padding:10px;">${k.merk}</td>
+                        <td style="padding:10px;">${k.tahun}</td>
+                        <td style="padding:10px;">${k.harga.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</td>
+                        <td style="padding:10px;">${k.stok}</td>
+                        <td style="padding:10px;">${k.status}</td>
+                        <td style="padding:10px;">
+                            <button onclick="editKendaraan(${index})"
+                                style="background:#ffc107; color:white; border:none; padding:6px 12px; 
+                                    border-radius:6px; cursor:pointer; margin-right:6px; transition:0.3s;"
+                                onmouseover="this.style.background='#e0a800'" 
+                                onmouseout="this.style.background='#ffc107'">
+                                Update
+                            </button>
+                            <button onclick="hapusKendaraan(${index})"
+                                style="background:#d9534f; color:white; border:none; padding:6px 12px; 
+                                    border-radius:6px; cursor:pointer; transition:0.3s;"
+                                onmouseover="this.style.background='#b52b27'" 
+                                onmouseout="this.style.background='#d9534f'">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                    `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function hapusKendaraan(index) {
+            daftarKendaraan.splice(index, 1);
+            renderTable();
+        }
+
+        // Tambah/Update Kendaraan
+        let currentIndex = null;
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const nomor = document.getElementById("nomor").value;
+            const jenis = document.getElementById("jenis").value;
+            const merk = document.getElementById("merk").value;
+            const tahun = parseInt(document.getElementById("tahun").value);
+            const harga = parseFloat(document.getElementById("harga").value);
+            const stok = parseInt(document.getElementById("stok").value);
+
+            let kendaraanBaru;
+            if (jenis === "sepeda") kendaraanBaru = new sepeda(nomor, merk, tahun, harga, stok, "Gunung");
+            else if (jenis === "motor") kendaraanBaru = new motor(nomor, merk, tahun, harga, stok, "Matic");
+            else if (jenis === "mobil") kendaraanBaru = new mobil(nomor, merk, tahun, harga, stok, 5);
+            else if (jenis === "bus") kendaraanBaru = new bus(nomor, merk, tahun, harga, stok, 50);
+            else if (jenis === "truk") kendaraanBaru = new truk(nomor, merk, tahun, harga, stok, 10);
+            else if (jenis === "kereta") kendaraanBaru = new kereta(nomor, merk, tahun, harga, stok, 8);
+            else kendaraanBaru = new Kendaraan(nomor, jenis, merk, tahun, harga, stok);
+
+            if (currentIndex !== null) {
+                // Update
+                daftarKendaraan[currentIndex] = kendaraanBaru;
+                currentIndex = null;
+            } else {
+                // Tambah baru
+                daftarKendaraan.push(kendaraanBaru);
+            }
+
+            renderTable();
+            form.reset();
+        });
+
+        //Edit Kendaraan
+        function editKendaraan(index) {
+            const k = daftarKendaraan[index];
+            currentIndex = index;
+
+            document.getElementById("nomor").value = k.nomor;
+            document.getElementById("jenis").value = k.jenis.toLowerCase();
+            document.getElementById("merk").value = k.merk;
+            document.getElementById("tahun").value = k.tahun;
+            document.getElementById("harga").value = k.harga;
+            document.getElementById("stok").value = k.stok;
+
+            document.getElementById("tambah-kendaraan").innerText = "UPDATE DATA KENDARAAN";
+            form.scrollIntoView({ behavior: "smooth" });
+        }
+
+        renderTable();
+        form.reset();
+
+        document.getElementById("tambah-kendaraan").innerText = "TAMBAHKAN KENDARAAN BARU";
+
+        //PELANGGAN
+        class Pelanggan {
+            constructor(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan, kategori_pelanggan) {
+                this.nama_pelanggan = nama_pelanggan;
+                this.alamat_pelanggan = alamat_pelanggan;
+                this.telp_pelanggan = telp_pelanggan;
+                this.sewa_pelanggan = sewa_pelanggan;
+                this.kategori_pelanggan = kategori_pelanggan; 
+            }
+        }
+
+        class PelangganBiasa extends Pelanggan {
+            constructor(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan) {
+                super(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan, "Biasa");
+            }
+        }
+
+        class PelangganVIP extends Pelanggan {
+            constructor(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan) {
+                super(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan, "VIP");
+            }
+        }
+
+        class PelangganExclusive extends Pelanggan {
+            constructor(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan) {
+                super(nama_pelanggan, alamat_pelanggan, telp_pelanggan, sewa_pelanggan, "Exclusive");
+            }
+        }
+
+        let daftarPelanggan = [
+            new PelangganBiasa("Budi", "Jl. Merdeka 1", "08123456789", "Motor"),
+            new PelangganBiasa("Nabila", "Jl. Kebon 5", "08567890123", "Motor"),
+            new PelangganBiasa("Tono", "Jl. Melati 8", "08344556677", "Sepeda"),
+            new PelangganBiasa("Fajar", "Jl. Dahlia 11", "08366778899", "Sepeda"),
+            new PelangganVIP("Aisyah", "Jl. Sudirman 2", "08234567890", "Mobil"),
+            new PelangganVIP("Rina", "Jl. Pahlawan 6", "08111222333", "Mobil"),
+            new PelangganVIP("Lina", "Jl. Anggrek 9", "08122334455", "Mobil"),
+            new PelangganExclusive("Andi", "Jl. Gatot Subroto 3", "08345678901", "Sepeda"),
+            new PelangganExclusive("Doni", "Jl. Mangga 7", "08233445566", "Motor"),
+            new PelangganExclusive("Santi", "Jl. Mawar 10", "08255667788", "Motor")
+        ];
+
+        const formPelanggan = document.getElementById("form-pelanggan");
+        const tablePelanggan = document.getElementById("table-pelanggan");
+        let currentPelangganIndex = null;
+
+        // Render Tabel Pelanggan
+        function renderTablePelanggan() {
+            tablePelanggan.innerHTML = "";
+            daftarPelanggan.forEach((p, index) => {
+                const row = `
+            <tr>
+                <td style="padding:10px;">${index + 1}</td>
+                <td style="padding:10px;">${p.nama_pelanggan}</td>
+                <td style="padding:10px;">${p.alamat_pelanggan}</td>
+                <td style="padding:10px;">${p.telp_pelanggan}</td>
+                <td style="padding:10px;">${p.sewa_pelanggan}</td>
+                <td style="padding:10px;">${p.kategori_pelanggan}</td>
+                <td style="padding:10px;">
+                    <button style="background:#ffc107; color:#000; padding:5px 10px; border:none; border-radius:5px; cursor:pointer; margin-right:5px;" onclick="editPelanggan(${index})">Update</button>
+                    <button style="background:#e74c3c; color:#fff; padding:5px 10px; border:none; border-radius:5px; cursor:pointer;" onclick="hapusPelanggan(${index})">Hapus</button>
+                </td>
+            </tr>
+        `;
+                tablePelanggan.innerHTML += row;
+            });
+        }
+
+        // Hapus Pelanggan
+        function hapusPelanggan(index) {
+            daftarPelanggan.splice(index, 1);
+            renderTablePelanggan();
+        }
+
+        // Edit Pelanggan
+        function editPelanggan(index) {
+            const p = daftarPelanggan[index];
+            currentPelangganIndex = index;
+
+            document.getElementById("nama_pelanggan").value = p.nama_pelanggan;
+            document.getElementById("alamat_pelanggan").value = p.alamat_pelanggan;
+            document.getElementById("telp_pelanggan").value = p.telp_pelanggan;
+            document.getElementById("sewa_pelanggan").value = p.sewa_pelanggan;
+            document.getElementById("kategori_pelanggan").value = p.kategori_pelanggan;
+
+            formPelanggan.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Tambah / Update Pelanggan
+        formPelanggan.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const nama = document.getElementById("nama_pelanggan").value;
+            const alamat = document.getElementById("alamat_pelanggan").value;
+            const telp = document.getElementById("telp_pelanggan").value;
+            const kendaraan = document.getElementById("sewa_pelanggan").value;
+            const kategori = document.getElementById("kategori_pelanggan").value;
+
+            let pelangganBaru;
+            if (kategori === "Biasa") pelangganBaru = new PelangganBiasa(nama, alamat, telp, kendaraan);
+            else if (kategori === "VIP") pelangganBaru = new PelangganVIP(nama, alamat, telp, kendaraan);
+            else pelangganBaru = new PelangganExclusive(nama, alamat, telp, kendaraan);
+
+            if (currentPelangganIndex !== null) {
+                daftarPelanggan[currentPelangganIndex] = pelangganBaru;
+                currentPelangganIndex = null;
+            } else {
+                daftarPelanggan.push(pelangganBaru);
+            }
+
+            renderTablePelanggan();
+            formPelanggan.reset();
+        });
+        renderTablePelanggan();
+
+
+        //TRANSAKSI
+        const selectPelanggan = document.getElementById("select_pelanggan");
+        const alamatTransaksi = document.getElementById("alamat_transaksi");
+        const telpTransaksi = document.getElementById("telp_transaksi");
+        const kategoriTransaksi = document.getElementById("kategori_transaksi");
+
+        const selectKendaraan = document.getElementById("select_kendaraan");
+        const merkTransaksi = document.getElementById("merk_transaksi");
+        const tahunTransaksi = document.getElementById("tahun_transaksi");
+        const hargaTransaksi = document.getElementById("harga_transaksi");
+        const stokTransaksi = document.getElementById("stok_transaksi");
+
+        const tglMulai = document.getElementById("tgl_mulai");
+        const tglSelesai = document.getElementById("tgl_selesai");
+        const totalTransaksi = document.getElementById("total_transaksi");
+
+        const formTransaksi = document.getElementById("form-transaksi");
+        const tableTransaksi = document.getElementById("table-transaksi");
+        let daftarTransaksi = [];
+
+        // Render select pelanggan
+        function renderSelectPelanggan() {
+            selectPelanggan.innerHTML = '<option value="">-- Pilih Pelanggan --</option>';
+            daftarPelanggan.forEach(p => {
+                const option = document.createElement("option");
+                option.value = p.nama_pelanggan;
+                option.textContent = p.nama_pelanggan;
+                selectPelanggan.appendChild(option);
+            });
+        }
+
+        // Event pilih pelanggan
+        selectPelanggan.addEventListener("change", () => {
+            const pelanggan = daftarPelanggan.find(p => p.nama_pelanggan === selectPelanggan.value);
+            if (pelanggan) {
+                alamatTransaksi.value = pelanggan.alamat_pelanggan;
+                telpTransaksi.value = pelanggan.telp_pelanggan;
+                kategoriTransaksi.value = pelanggan.kategori_pelanggan;
+            } else {
+                alamatTransaksi.value = "";
+                telpTransaksi.value = "";
+                kategoriTransaksi.value = "";
+            }
+        });
+
+        renderSelectPelanggan();
+
+        // Render select kendaraan
+        function renderSelectKendaraan() {
+            selectKendaraan.innerHTML = '<option value="">-- Pilih Kendaraan --</option>';
+            daftarKendaraan.forEach(k => {
+                const option = document.createElement("option");
+                option.value = k.nomor;
+                option.textContent = `${k.nomor} - ${k.merk} (${k.jenis})`;
+                selectKendaraan.appendChild(option);
+            });
+        }
+
+        // Event pilih kendaraan
+        selectKendaraan.addEventListener("change", () => {
+            const kendaraan = daftarKendaraan.find(k => k.nomor === selectKendaraan.value);
+            if (kendaraan) {
+                merkTransaksi.value = kendaraan.merk;
+                tahunTransaksi.value = kendaraan.tahun;
+                hargaTransaksi.value = kendaraan.harga.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+                stokTransaksi.value = kendaraan.stok;
+            } else {
+                merkTransaksi.value = "";
+                tahunTransaksi.value = "";
+                hargaTransaksi.value = "";
+                stokTransaksi.value = "";
+            }
+        });
+
+        renderSelectKendaraan();
+
+        // Hitung total
+        function hitungTotal() {
+            const kendaraan = daftarKendaraan.find(k => k.nomor === selectKendaraan.value);
+            const harga = kendaraan ? kendaraan.harga : 0;
+
+            const start = new Date(tglMulai.value);
+            const end = new Date(tglSelesai.value);
+
+            if (start && end && end >= start) {
+                const diffDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+                const totalHarga = harga * diffDays;
+
+                // Tampilkan di input sebagai Rupiah
+                totalTransaksi.value = totalHarga.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+
+                // Simpan angka murni di dataset input agar bisa dipakai saat submit
+                totalTransaksi.dataset.total = totalHarga;
+            } else {
+                totalTransaksi.value = "";
+                totalTransaksi.dataset.total = 0;
+            }
+        }
+
+        tglMulai.addEventListener("change", hitungTotal);
+        tglSelesai.addEventListener("change", hitungTotal);
+
+        // Submit transaksi
+        formTransaksi.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const pelanggan = daftarPelanggan.find(p => p.nama_pelanggan === selectPelanggan.value);
+            const kendaraan = daftarKendaraan.find(k => k.nomor === selectKendaraan.value);
+
+            if (!pelanggan || !kendaraan) return alert("Pilih pelanggan & kendaraan!");
+            if (kendaraan.stok <= 0) return alert("Kendaraan tidak tersedia!");
+
+            // Kurangi stok
+            kendaraan.stok--;
+            kendaraan.status = kendaraan.stok > 0 ? "Tersedia" : "Habis";
+            renderSelectKendaraan();
+
+            // Hitung total asli
+            const start = new Date(tglMulai.value);
+            const end = new Date(tglSelesai.value);
+            const diffDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+            const totalHarga = parseInt(totalTransaksi.dataset.total); 
+            const transaksiBaru = {
+                nama: pelanggan.nama_pelanggan,
+                alamat: pelanggan.alamat_pelanggan,
+                telp: pelanggan.telp_pelanggan,
+                kategori: pelanggan.kategori_pelanggan,
+                jenis: kendaraan.jenis,
+                merk: kendaraan.merk,
+                tahun: kendaraan.tahun,
+                harga: kendaraan.harga,
+                stok: kendaraan.stok,
+                tglMulai: tglMulai.value,
+                tglSelesai: tglSelesai.value,
+                total: totalHarga
+            };
+
+            daftarTransaksi.push(transaksiBaru);
+            renderTableTransaksi();
+
+            formTransaksi.reset();
+            alamatTransaksi.value = "";
+            telpTransaksi.value = "";
+            kategoriTransaksi = "";
+            merkTransaksi.value = "";
+            tahunTransaksi.value = "";
+            hargaTransaksi.value = "";
+            stokTransaksi.value = "";
+            totalTransaksi.value = "";
+        });
+
+        // Render tabel transaksi
+        function renderTableTransaksi() {
+            tableTransaksi.innerHTML = "";
+            daftarTransaksi.forEach(t => {
+                const row = `
+        <tr>
+            <td style="padding:10px;">${t.nama}</td>
+            <td style="padding:10px;">${t.alamat}</td>
+            <td style="padding:10px;">${t.telp}</td>
+            <td style="padding:10px;">${t.kategori}</td>
+            <td style="padding:10px;">${t.jenis}</td>
+            <td style="padding:10px;">${t.merk}</td>
+            <td style="padding:10px;">${t.tahun}</td>
+            <td style="padding:10px;">${t.harga.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</td>
+            <td style="padding:10px;">${t.stok}</td>
+            <td style="padding:10px;">${t.tglMulai}</td>
+            <td style="padding:10px;">${t.tglSelesai}</td>
+            <td style="padding:10px;">${t.total.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</td>
+        </tr>`;
+                tableTransaksi.innerHTML += row;
+            });
+        }
+
+    </script>
+</body>
+
+</html>
